@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Tiro+Bangla:ital@0;1&family=Galada&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #fbc02d; /* warm yellow */
+  --bg-dark: #121212;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden; /* prevent scrolling for a full screen app feel */
+  -webkit-user-select: none; /* Prevent accidental text selection caret on mobile */
+  user-select: none;
+  touch-action: pan-x pan-y; /* Prevent pinch-to-zoom but allow scrolling */
+}
+
+/* Utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.bengali-text {
+  font-family: 'Tiro Bangla', serif;
+}
+
+.fancy-bengali {
+  font-family: 'Galada', cursive;
+  color: #DAA520; /* Yellow Ochre / Goldenrod */
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+}
+
+/* Shared UI elements */
+button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+
+/* Global Tap Highlight and Outline Reset */
+button, a, input, select, textarea, [role='button'] {
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+}
+
+button:focus, a:focus, input:focus, select:focus, textarea:focus, [role='button']:focus {
+  outline: none !important;
+}

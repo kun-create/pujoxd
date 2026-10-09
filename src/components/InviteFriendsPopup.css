@@ -1,0 +1,95 @@
+.invite-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.invite-content {
+  background-color: #211c19;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px;
+  margin-bottom: 80px;
+    display: flex;
+  flex-direction: column;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.5);
+  animation: slideUpInvite 0.3s ease-out forwards;
+  padding-bottom: 32px;
+}
+
+@keyframes slideUpInvite {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.invite-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 16px;
+}
+
+.invite-close-btn {
+  position: absolute;
+  left: 20px;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.invite-title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+}
+
+.invite-body {
+  padding: 8px 20px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.invite-copy-box {
+  width: 100%;
+  background-color: #3b3b3b;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.invite-copy-box:hover {
+  background-color: #4a4a4a;
+}
+
+.invite-text {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.invite-copy-icon {
+  color: rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+}

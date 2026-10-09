@@ -1,0 +1,141 @@
+.hero-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s ease-out;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  color: var(--primary);
+  font-size: 120px;
+  line-height: 1.1;
+  font-weight: 700;
+  text-shadow: 2px 4px 16px rgba(0, 0, 0, 0.5);
+  margin-bottom: 24px;
+}
+
+.title-top {
+  margin-right: 40px;
+}
+
+.title-bottom {
+  margin-left: 40px;
+}
+
+.show-mobile-only {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    justify-content: flex-start;
+    padding-top: 40px;
+  }
+
+  .hero-title {
+    font-size: 72px;
+  }
+
+  .title-top {
+    margin-right: 20px;
+  }
+
+  .title-bottom {
+    margin-left: 20px;
+  }
+  
+  .show-mobile-only {
+    display: block;
+    position: absolute;
+    top: calc(38vh - 103px); /* Pulled up 15px to reduce gap, plus 3px uplift */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 1px;
+    z-index: 10;
+  }
+  
+  img.mobile-logo {
+    display: block;
+    position: absolute;
+    top: calc(10vh - 58px); /* Uplifted by 20px + 3px */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65%; /* Approximate original scale */
+    z-index: 5;
+    /* Explicitly no shadows or filters */
+    filter: none;
+    box-shadow: none;
+  }
+  
+  .dhak-cursor {
+    height: 32px; /* Small button size */
+    width: auto;
+    vertical-align: middle;
+    margin-left: -2px; /* Slid 3px to the left */
+    position: relative;
+    top: -7px;
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .dhak-cursor:hover {
+    transform: scale(1.1);
+  }
+
+  .dhak-cursor.typing {
+    /* Wobble animation while typing */
+    animation: dhak-wobble 0.2s infinite alternate;
+  }
+
+  @keyframes dhak-wobble {
+    0% { transform: rotate(-15deg) scale(1); }
+    100% { transform: rotate(15deg) scale(1.1); }
+  }
+}
+
+/* Specific styling for small screens */
+@media (max-width: 430px), (max-height: 700px) and (max-width: 768px) {
+  .hero-section .show-mobile-only {
+    /* Move text ABOVE the logo and pushed down by 15px to reduce gap, plus 3px uplift */
+    top: calc(12vh - 8px);
+  }
+  
+  .hero-section img.mobile-logo {
+    /* Move logo BELOW the text, but lifted 125px up (uplifted 20px + 3px) */
+    top: calc(22vh - 128px);
+  }
+}
+
+/* Specific styling for 8.3 inch+ tablets (like iPad Mini in portrait) */
+@media (min-width: 700px) and (min-height: 1000px) and (max-width: 768px) {
+  .hero-section .show-mobile-only {
+    /* Move text ABOVE the logo and push down by 15px to reduce gap, plus 3px uplift */
+    top: calc(12vh - 58px);
+  }
+  
+  .hero-section img.mobile-logo {
+    /* Move logo BELOW the text, but lift by 295px (uplifted 20px + 3px) */
+    top: calc(22vh - 298px);
+    /* Reduce size by 50px from its standard 65% width */
+    width: calc(65% - 50px);
+  }
+}

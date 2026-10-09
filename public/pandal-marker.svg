@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100" height="120">
+  <defs>
+    <filter id="pandal-pin-shadow" x="-30%" y="-20%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3.5" flood-color="#000000" flood-opacity="0.30" />
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Outer Pin Shape (Teardrop, 100% Symmetrical) -->
+  <path d="M 50 108 
+           L 20.69 66.90 
+           A 36 36 0 1 1 79.31 66.90 
+           Z" 
+        fill="#38251e" 
+        filter="url(#pandal-pin-shadow)" />
+
+  <!-- Inner Off-White Disk (Concentric) -->
+  <circle cx="50" cy="46" r="30.5" fill="#f8f6f2" />
+
+  <!-- Maroon Stylized Pandal Silhouette -->
+  <!-- House / Pavilion Archway -->
+  <path d="M 36.5 67 
+           L 36.5 55 
+           L 50 48 
+           L 63.5 55 
+           L 63.5 67 
+           L 55 67 
+           L 55 60 
+           L 50 56.5 
+           L 45 60 
+           L 45 67 
+           Z" 
+        fill="#82232b" />
+
+  <!-- Sacred Flame Motif -->
+  <!-- Left Main Flame -->
+  <path d="M 50 27 
+           C 46 31.5 42.5 35.5 42.5 39.5 
+           C 42.5 43.5 45.5 45.8 48.5 45.8 
+           C 46.5 43.3 47.2 39 49.8 35.5 
+           C 50.8 33.5 50.8 30.5 50 27 
+           Z" 
+        fill="#82232b" />
+
+  <!-- Right Complementary Flame -->
+  <path d="M 52.8 31.5 
+           C 55.5 34.5 57.2 37.2 57.2 39.8 
+           C 57.2 43.5 54.2 45.8 50.8 45.8 
+           C 52.8 43.3 53 39.5 51.2 36.8 
+           C 50.8 35.5 51.4 33.5 52.8 31.5 
+           Z" 
+        fill="#82232b" />
+</svg>

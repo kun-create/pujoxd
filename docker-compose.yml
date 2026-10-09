@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    container_name: pujo-porikroma
+    ports:
+      - "${HOST_PORT:-5173}:3000"
+    env_file:
+      - .env
+    volumes:
+      - ./public/songs:/app/public/songs:ro
+      - ./users.json:/app/users.json
+      - ./reports.json:/app/reports.json
+      - ./contacts.json:/app/contacts.json
+      - ./pandal_requests.json:/app/pandal_requests.json
+    restart: unless-stopped

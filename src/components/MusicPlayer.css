@@ -1,0 +1,226 @@
+.music-player-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto; /* push to bottom */
+}
+
+.music-player {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 440px;
+  border-radius: 24px;
+  padding: 16px;
+  background: rgba(40, 30, 30, 0.6); /* Slightly reddish dark tint to match reference */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.player-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.track-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0; /* Allows shrinking below content size */
+}
+
+.album-art {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+@keyframes spin-disk {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.album-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: spin-disk 10s linear infinite;
+  animation-play-state: paused;
+}
+
+.album-art.playing img {
+  animation-play-state: running;
+}
+
+.track-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0; /* Essential for text truncation in flexbox */
+}
+
+.track-title {
+  font-weight: 600;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-artist {
+  font-size: 14px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-time {
+  font-size: 12px;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.control-btn {
+  color: var(--text-secondary);
+}
+
+.control-btn:hover {
+  color: var(--text-primary);
+}
+
+.play-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+  color: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-icon-offset {
+  margin-left: 3px; /* visual center for play icon */
+}
+
+.progress-container {
+  width: 100%;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin: 0; /* Removed extra margin to reduce gap */
+  overflow: visible; /* Allow invisible thumb to overflow */
+  cursor: pointer;
+  position: relative; /* Anchor for absolute input */
+}
+
+/* Invisible native slider for seamless drag/scrubbing */
+.progress-input {
+  position: absolute;
+  top: -10px; /* Expanded hit area for fat fingers */
+  left: 0;
+  width: 100%;
+  height: 24px;
+  opacity: 0; /* Completely invisible, keeps native design intact */
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #daa520; /* Yellow ochre */
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.player-top {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-category-selector {
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 8px; /* Keeps the button tightly anchored to the player */
+  display: flex;
+}
+
+.category-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 17px;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  background: rgba(50, 40, 40, 0.8);
+}
+
+.player-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 8px 4px;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+@media (hover: hover) {
+  .action-btn:hover {
+    color: var(--text-primary);
+  }
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.show-mobile-flex {
+  display: flex !important;
+}
+
+@media (min-height: 700px) {
+  .music-player-container {
+    padding-bottom: 64px;
+  }
+}

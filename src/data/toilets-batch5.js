@@ -1,0 +1,27 @@
+// toilets-batch5.js
+export const toiletsBatch5 = [
+  { name: "Behala Club Zone Toilet 1", category: "Toilets", lat: 22.4925, lng: 88.3278 },
+  { name: "Behala Club Zone Toilet 2", category: "Toilets", lat: 22.4932, lng: 88.3285 },
+  { name: "Barisha Sarbojonin Zone Toilet 1", category: "Toilets", lat: 22.4808, lng: 88.3148 },
+  { name: "Barisha Sarbojonin Zone Toilet 2", category: "Toilets", lat: 22.4815, lng: 88.3155 },
+  { name: "Behala 41 Pally Zone Toilet 1", category: "Toilets", lat: 22.4788, lng: 88.3488 },
+  { name: "Behala 41 Pally Zone Toilet 2", category: "Toilets", lat: 22.4795, lng: 88.3495 },
+  { name: "Behala Natun Sangha Zone Toilet 1", category: "Toilets", lat: 22.4902, lng: 88.3282 },
+  { name: "Behala Natun Sangha Zone Toilet 2", category: "Toilets", lat: 22.4908, lng: 88.3288 },
+  { name: "Bosepukur Sitala Mandir Zone Toilet 1", category: "Toilets", lat: 22.5135, lng: 88.3752 },
+  { name: "Bosepukur Sitala Mandir Zone Toilet 2", category: "Toilets", lat: 22.5142, lng: 88.3758 },
+  { name: "Rajdanga Tribarna Sangha Zone Toilet 1", category: "Toilets", lat: 22.5115, lng: 88.3788 },
+  { name: "Rajdanga Tribarna Sangha Zone Toilet 2", category: "Toilets", lat: 22.5122, lng: 88.3795 },
+  { name: "Kasba Rathtala Zone Toilet 1", category: "Toilets", lat: 22.5122, lng: 88.3805 },
+  { name: "Kasba Rathtala Zone Toilet 2", category: "Toilets", lat: 22.5128, lng: 88.3812 },
+  { name: "Baghajatin Tarun Sangha Zone Toilet 1", category: "Toilets", lat: 22.4818, lng: 88.3728 },
+  { name: "Baghajatin Tarun Sangha Zone Toilet 2", category: "Toilets", lat: 22.4825, lng: 88.3735 },
+  { name: "Patuli Upnagari Zone Toilet 1", category: "Toilets", lat: 22.4748, lng: 88.3875 },
+  { name: "Patuli Upnagari Zone Toilet 2", category: "Toilets", lat: 22.4755, lng: 88.3882 },
+  { name: "Garia Mitali Sangha Zone Toilet 1", category: "Toilets", lat: 22.4648, lng: 88.3878 },
+  { name: "Garia Mitali Sangha Zone Toilet 2", category: "Toilets", lat: 22.4655, lng: 88.3885 },
+  { name: "Jadavpur Athletic Club Zone Toilet 1", category: "Toilets", lat: 22.4958, lng: 88.3688 },
+  { name: "Jadavpur Athletic Club Zone Toilet 2", category: "Toilets", lat: 22.4965, lng: 88.3695 },
+  { name: "Babubagan Club Zone Toilet 1", category: "Toilets", lat: 22.5022, lng: 88.3538 },
+  { name: "Babubagan Club Zone Toilet 2", category: "Toilets", lat: 22.5028, lng: 88.3544 }
+];

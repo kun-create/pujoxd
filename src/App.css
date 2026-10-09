@@ -1,0 +1,543 @@
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh; /* Fallback for older browsers */
+  height: 100dvh; /* Dynamic viewport height to fix mobile browser URL bar clipping */
+  display: flex;
+  flex-direction: column;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/desktop-bg-new.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.6) 100%);
+  z-index: -1;
+}
+
+.scrollable-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 1;
+}
+
+/* Desktop-Only Scrollbar Thickness */
+@media (min-width: 769px) {
+  .scrollable-wrapper::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollable-wrapper::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .scrollable-wrapper::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+  }
+
+  .scrollable-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.main-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  padding: 24px;
+  flex-shrink: 0;
+}
+
+.second-page {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  background-color: #550719; /* matches the burgundy background of the image roughly */
+}
+
+.third-page {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  background-color: #796533;
+}
+
+/* Mobile View (max-width: 768px) */
+.third-page-mobile {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(100vh - 11px);
+  min-height: calc(100dvh - 11px);
+  background-color: #796533;
+  position: relative;
+}
+
+.third-page-mobile-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.third-page-mobile-bottom-space {
+  flex: 1;
+  min-height: 129px; /* Reduced by 11px from 140px to fit tighter */
+  margin-top: -11px; /* Reduces background image vertical stretch by exactly 11px */
+  width: 100%;
+  background-color: #796533;
+  position: relative;
+  z-index: 1;
+}
+
+.third-page-desktop {
+  display: none;
+}
+
+/* Desktop View (min-width: 769px) */
+@media (min-width: 769px) {
+  .third-page {
+    background-color: #181210;
+  }
+
+  .third-page-mobile {
+    display: none;
+  }
+
+  .third-page-desktop {
+    display: flex;
+    width: 100%;
+    height: calc(100vh + 150px);
+    height: calc(100dvh + 150px);
+    min-height: calc(100vh + 150px);
+    min-height: calc(100dvh + 150px);
+    background-color: #181210;
+    background-image: url('/third-page-desktop.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .third-page-desktop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+}
+
+.page-seam-blur {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 25%, black 75%, transparent);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 16px;
+  }
+  
+  .background-image {
+    background-image: url('/mobile-bg-clean.jpg');
+    background-position: center; /* Center to show the idol properly */
+  }
+}
+
+.landscape-overlay {
+  display: none;
+}
+
+/* Target mobile/tablet devices in landscape rotation */
+@media screen and (orientation: landscape) and (max-height: 1024px) and (pointer: coarse) {
+  .main-content, .background-overlay, .second-page, .third-page, .page-seam-blur, .music-wave-overlay, .tp-player-wrapper {
+    display: none !important;
+  }
+  
+  .background-image {
+    background-image: url('/blur.png') !important;
+    background-position: center !important;
+    background-size: cover !important;
+    z-index: 1;
+  }
+  
+  .landscape-overlay {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .landscape-text {
+    font-size: 28px;
+    font-weight: bold;
+    color: #DAA520; /* Yellow Ochre */
+    padding: 24px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+    letter-spacing: 1px;
+  }
+}
+
+/* Map Loader Overlay Transition */
+.map-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  filter: blur(0px);
+  transition: opacity 1s ease-in-out, filter 1s ease-in-out;
+}
+
+.map-loader-overlay.fade-out {
+  opacity: 0;
+  filter: blur(20px);
+  pointer-events: none;
+}
+
+/* ================================================================
+   MUSIC WAVE ANIMATION OVERLAY — Third Page Mobile Only
+   Target zone: between the two blue marker lines in the reference
+   image, spanning the singer's shoulder / radio area.
+   
+   Image is 1080×1920 (9:16). On 390px screen → rendered 390×693px.
+   Upper blue line ≈ 58% of image = ~401px from image top.
+   Lower blue line ≈ 78% of image = ~540px from image top.
+   Container min-height ≈ 844px. Bottom-space ≈ 151px.
+   From container bottom:
+     lower line → 844–540 = 304px = ~36%
+     upper line → 844–401 = 443px = ~52.5%
+   Overlay: bottom:36%, height:130px (covering that 16.5% band).
+   ================================================================ */
+
+@media (max-width: 768px) {
+
+  /* ── Third-page countdown badge ──
+     Positioned inside the yellow circle area (~30% from container top).
+     Isolated from the landing-page countdown — independent DOM element. */
+  .tp3-countdown-badge {
+    position: absolute;
+    top: calc(30% - 29px);
+    left: 50%;
+    transform: translateX(calc(-50% + 12px));
+    z-index: 8;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .tp3-subtitle-badge {
+    position: absolute;
+    top: calc(30% - 52px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 8;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .tp3-countdown-text {
+    font-family: 'Galada', cursive;
+    color: #F0D78C;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-shadow:
+      1px 1px 5px  rgba(0, 0, 0, 0.72),
+      0   0   10px rgba(0, 0, 0, 0.40);
+  }
+
+  .tp3-radio-icon {
+    font-size: 17px;
+    line-height: 1;
+    position: relative;
+    top: -4px;
+    filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.65));
+  }
+
+  /* ── Outer overlay container ── */
+  .music-wave-overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(36% - 200px);
+    height: 130px;
+    pointer-events: none;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow: hidden;           /* clip notes at left/right edges  */
+  }
+
+  /* ────────────────────────────────────────────
+     LAYER 1 — Bengali text marquee (right → left)
+     Replaced SVG textPath approach with a simple
+     absolutely-positioned span for full compatibility.
+  ──────────────────────────────────────────── */
+  .bengali-text-runner {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin-bottom: -6px;    /* was -14px; +8px gap to staff/notes layer */
+  }
+
+  /* The span never wraps, so the FULL text always renders */
+  .bengali-text-scroll {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    white-space: nowrap;          /* prevents any text truncation */
+    font-size: 14px;
+    color: rgba(92, 32, 0, 0.97); /* dark brown — unchanged */
+    font-family: 'Noto Serif Bengali', 'Noto Sans Bengali',
+                 'Hind Siliguri', 'Mukti', serif;
+    font-weight: 700;
+    letter-spacing: 0.35px;
+    will-change: transform;
+    /* 75s scroll right→left + 2s pause off-screen left = 77s cycle */
+    animation: sweepBengaliText 77s linear infinite;
+  }
+
+  @keyframes sweepBengaliText {
+    /* 0s   : span starts 1 viewport-width off-screen to the right */
+    0%    { transform: translateX(100vw);  }
+    /* ~75s : span has fully exited off-screen to the left (scroll done) */
+    97.4% { transform: translateX(-100%); }
+    /* ~77s : hold off-screen left for 2s pause, then loop resets */
+    100%  { transform: translateX(-100%); }
+  }
+
+  /* ────────────────────────────────────────────
+     LAYERS 2+3 — Staff lines AND notes in one
+     shared 68px container so they interweave.
+     Staff line positions (bottom from container):
+       line 1 (y=5  / 46): ~61px
+       line 2 (y=16 / 46): ~44px
+       line 3 (y=27 / 46): ~28px
+       line 4 (y=38 / 46): ~12px
+  ──────────────────────────────────────────── */
+  .staff-notes-layer {
+    position: relative;
+    width: 100%;
+    height: 68px;
+    flex-shrink: 0;
+    /* overflow visible so large notes at animation end aren't clipped vertically */
+    overflow: visible;
+  }
+
+  .staff-lines-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;   /* fills the 68px container — lines scale with it */
+    z-index: 1;
+  }
+
+  /* Base note — all share the same keyframe */
+  .music-note {
+    position: absolute;
+    left: -12vw;                        /* starting point off-screen left */
+    color: rgba(92, 32, 0, 0.92);
+    font-size: 16px;
+    line-height: 1;
+    text-shadow: 0 0 8px rgba(60, 10, 0, 0.55);
+    will-change: transform, opacity;
+    animation: notePerspective 10s ease-in infinite;
+    z-index: 3;
+  }
+
+  /*
+    notePerspective:
+      translateX  0 → 122vw   (left off-screen to right off-screen)
+      scale       0.15 → 2.8  (tiny → large = 3-D depth illusion)
+      translateY varies mid-point via --wy (small ± to stay on staff line)
+  */
+  @keyframes notePerspective {
+    0%  {
+      transform: translateX(0)     translateY(0)             scale(0.15);
+      opacity: 0;
+    }
+    7%  { opacity: 1; }
+    50% {
+      transform: translateX(61vw)  translateY(var(--wy, -5px)) scale(1.35);
+      opacity: 0.88;
+    }
+    90% { opacity: 0.65; }
+    100% {
+      transform: translateX(122vw) translateY(0)             scale(2.8);
+      opacity: 0;
+    }
+  }
+
+  /* 12 notes distributed across 4 staff lines (3 per line).
+     bottom values match staff line positions in the 68px container.
+     --wy kept small (±4px) so notes stay interwoven with their line. */
+  .mn-1  { bottom: 60px; animation-delay:  0.00s; --wy: -3px; }  /* line 1 */
+  .mn-2  { bottom: 44px; animation-delay:  0.83s; --wy:  3px; }  /* line 2 */
+  .mn-3  { bottom: 28px; animation-delay:  1.66s; --wy: -3px; }  /* line 3 */
+  .mn-4  { bottom: 12px; animation-delay:  2.49s; --wy:  2px; }  /* line 4 */
+  .mn-5  { bottom: 62px; animation-delay:  3.32s; --wy: -2px; }  /* line 1 */
+  .mn-6  { bottom: 46px; animation-delay:  4.15s; --wy:  4px; }  /* line 2 */
+  .mn-7  { bottom: 26px; animation-delay:  4.98s; --wy: -4px; }  /* line 3 */
+  .mn-8  { bottom: 10px; animation-delay:  5.81s; --wy:  2px; }  /* line 4 */
+  .mn-9  { bottom: 58px; animation-delay:  6.64s; --wy: -3px; }  /* line 1 */
+  .mn-10 { bottom: 42px; animation-delay:  7.47s; --wy:  3px; }  /* line 2 */
+  .mn-11 { bottom: 30px; animation-delay:  8.30s; --wy: -2px; }  /* line 3 */
+  .mn-12 { bottom: 14px; animation-delay:  9.13s; --wy:  2px; }  /* line 4 */
+
+} /* end @media (max-width: 768px) */
+
+/* Extend the bottom portion of the fourth page with a solid brown background to cover overlapping audio player content */
+.fourth-page {
+  position: relative;
+  padding-bottom: 25px;
+  background-color: #1d0f0f;
+}
+
+.fourth-page::after {
+  content: '';
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #1d0f0f;
+  z-index: 10;
+}
+
+/* Desktop Third Page Player positioning */
+@media (min-width: 769px) {
+  .tp3-desktop-player {
+    position: absolute;
+    top: calc(55% - 25px);
+    left: 72%;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 15;
+  }
+  
+  .tp3-desktop-player .tp-player-wrapper {
+    position: absolute;
+    bottom: auto !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: translate(-50%, -50%) !important;
+    pointer-events: auto;
+  }
+  
+  .tp3-desktop-player .song-list-overlay {
+    pointer-events: auto;
+  }
+}
+
+/* Fourth Page Responsive Images */
+.fourth-page-desktop-img {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .fourth-page-mobile-img {
+    display: none !important;
+  }
+  
+  .fourth-page-desktop-img {
+    display: block !important;
+  }
+}
+
+/* Desktop Third Page Badges positioning */
+@media (min-width: 769px) {
+  .tp3-desktop-subtitle-badge {
+    position: absolute;
+    top: calc(30% - 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 8;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .tp3-desktop-countdown-badge {
+    position: absolute;
+    top: calc(30% + 28px);
+    left: 50%;
+    transform: translateX(calc(-50% + 16px));
+    z-index: 8;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .tp3-desktop-countdown-text {
+    font-family: 'Galada', cursive;
+    color: #F0D78C;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-shadow:
+      1px 1px 5px  rgba(0, 0, 0, 0.72),
+      0   0   10px rgba(0, 0, 0, 0.40);
+  }
+
+  .tp3-desktop-radio-icon {
+    font-size: 22px;
+    line-height: 1;
+    position: relative;
+    top: -4px;
+    filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.65));
+  }
+}
